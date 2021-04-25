@@ -11,15 +11,15 @@ app.secret_key = 'lAlAlA123'
 basic_auth = BasicAuth(app)
 
 # Yes need to have -, change it!
-chatID = "-xchatIDx"
+chatID = "1058704380"
 
 # Authentication conf, change it!
 app.config['BASIC_AUTH_FORCE'] = True
-app.config['BASIC_AUTH_USERNAME'] = 'XXXUSERNAME'
-app.config['BASIC_AUTH_PASSWORD'] = 'XXXPASSWORD'
+app.config['BASIC_AUTH_USERNAME'] = 'evan'
+app.config['BASIC_AUTH_PASSWORD'] = 'evanLxx123'
 
 # Bot token, change it!
-bot = telegram.Bot(token="botToken")
+bot = telegram.Bot(token="1598620697:AAH3ZiMrZ1J74FoY4OxXfLKyfqP8uFAyipE")
 
 @app.route('/alert', methods = ['POST'])
 def postAlertmanager():
