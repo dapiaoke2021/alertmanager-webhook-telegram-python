@@ -7,8 +7,7 @@ WORKDIR /alertmanager-webhook-telegram
 RUN apk update \
                 && apk add git py3-pip bash gcc python3-dev musl-dev libffi-dev openssl-dev unzip tzdata \
                 && rm -rf /var/cache/apk/* \
-                && git clone https://github.com/qq516249940/alertmanager-webhook-telegram-python.git . \
-                && git checkout dev  \
+                && git clone https://github.com/dapiaoke2021/alertmanager-webhook-telegram-python.git . \
                 && pip3 install -r requirements.txt \
                 && chmod +x docker/run.sh 
              

@@ -27,7 +27,7 @@ else
 fi
 
 sed -i s/botToken/"$bottoken"/ flaskAlert.py
-sed -i s/xchatIDx/"$chatid"/ flaskAlert.py
+sed -i s/-xchatIDx/"$chatid"/ flaskAlert.py
 sed -i s/XXXUSERNAME/"$username"/ flaskAlert.py
 sed -i s/XXXPASSWORD/"$password"/ flaskAlert.py
 

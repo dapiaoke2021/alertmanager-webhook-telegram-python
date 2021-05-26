@@ -11,7 +11,7 @@ app.secret_key = 'lAlAlA123'
 basic_auth = BasicAuth(app)
 
 # Yes need to have -, change it!
-chatID = "-xchatIDx"
+chatID = "xchatIDx"
 
 # Authentication conf, change it!
 app.config['BASIC_AUTH_FORCE'] = True
