@@ -21,6 +21,20 @@ app.config['BASIC_AUTH_PASSWORD'] = 'XXXPASSWORD'
 # Bot token, change it!
 bot = telegram.Bot(token="botToken")
 
+@app.route('/send/<chatId>', methods = ['POST'])
+def postMessage(chatId):
+
+    try:
+        content = request.get_data()
+        app.logger.info("\t%s",content)
+        bot.sendMessage(chat_id=chatId, text=content.decode("utf-8"))
+        return "Alert OK", 200
+    except Exception as error:       
+        bot.sendMessage(chat_id=chatID, text="Error to read json: "+str(error))
+        app.logger.info("\t%s",error)
+        return "Alert fail", 200
+
+
 @app.route('/alert', methods = ['POST'])
 def postAlertmanager():
 
