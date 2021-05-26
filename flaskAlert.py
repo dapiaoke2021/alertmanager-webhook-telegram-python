@@ -11,23 +11,23 @@ app.secret_key = 'lAlAlA123'
 basic_auth = BasicAuth(app)
 
 # Yes need to have -, change it!
-chatID = "1058704380"
+chatID = "xchatIDx"
 
 # Authentication conf, change it!
 app.config['BASIC_AUTH_FORCE'] = True
-app.config['BASIC_AUTH_USERNAME'] = 'evan'
-app.config['BASIC_AUTH_PASSWORD'] = 'evanLxx123'
+app.config['BASIC_AUTH_USERNAME'] = 'XXXUSERNAME'
+app.config['BASIC_AUTH_PASSWORD'] = 'XXXPASSWORD'
 
 # Bot token, change it!
-bot = telegram.Bot(token="1598620697:AAH3ZiMrZ1J74FoY4OxXfLKyfqP8uFAyipE")
+bot = telegram.Bot(token="botToken")
 
-@app.route('/send', methods = ['POST'])
-def postMessage():
+@app.route('/send/<chatId>', methods = ['POST'])
+def postMessage(chatId):
 
     try:
         content = request.get_data()
         app.logger.info("\t%s",content)
-        bot.sendMessage(chat_id=chatID, text=content.decode("utf-8"))
+        bot.sendMessage(chat_id=chatId, text=content.decode("utf-8"))
         return "Alert OK", 200
     except Exception as error:       
         bot.sendMessage(chat_id=chatID, text="Error to read json: "+str(error))
