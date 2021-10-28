@@ -14,17 +14,22 @@ basic_auth = BasicAuth(app)
 chatID = "xchatIDx"
 
 # Authentication conf, change it!
-app.config['BASIC_AUTH_FORCE'] = True
+app.config['BASIC_AUTH_FORCE'] = False
 app.config['BASIC_AUTH_USERNAME'] = 'XXXUSERNAME'
 app.config['BASIC_AUTH_PASSWORD'] = 'XXXPASSWORD'
 
 # Bot token, change it!
-bot = telegram.Bot(token="botToken")
+bots = {}
 
-@app.route('/send/<chatId>', methods = ['POST'])
-def postMessage(chatId):
+@app.route('/send/<chatId>/<botToken>', methods = ['POST'])
+def postMessage(chatId, botToken):
 
     try:
+        if botToken in bots:
+            bot = bots[botToken]
+        else:
+            bot = telegram.Bot(botToken)
+            bots[botToken] = bot
         content = request.get_data()
         app.logger.info("\t%s",content)
         bot.sendMessage(chat_id=chatId, text=content.decode("utf-8"))
